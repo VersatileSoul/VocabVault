@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import HindiInput from '../components/HindiInput'
+import { useAuth } from '../context/AuthContext'
 
 const CATEGORY_INFO = {
   ows: { label: 'One Word Substitution', icon: '🔤' },
@@ -65,6 +66,7 @@ const EDIT_FIELDS = {
 
 function ViewCategory() {
   const { category } = useParams()
+  const { isAdmin } = useAuth()
   const [entries, setEntries] = useState([])
   const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
@@ -95,11 +97,17 @@ function ViewCategory() {
   }
 
   const deleteEntry = async (id) => {
+    const token = localStorage.getItem('vocabvault_token')
     try {
-      const res = await fetch(`/api/${category}/${id}`, { method: 'DELETE' })
+      const res = await fetch(`/api/${category}/${id}`, {
+        method: 'DELETE',
+        headers: { Authorization: `Bearer ${token}` },
+      })
       if (res.ok) {
         showNotification('Entry deleted 🗑️')
         fetchEntries()
+      } else {
+        showNotification('Unauthorized ❌')
       }
     } catch (err) {
       showNotification('Failed to delete ❌')
@@ -128,6 +136,7 @@ function ViewCategory() {
 
   const handleEditSubmit = async (e) => {
     e.preventDefault()
+    const token = localStorage.getItem('vocabvault_token')
     try {
       const cleanData = {}
       for (const [key, value] of Object.entries(editFormData)) {
@@ -137,7 +146,10 @@ function ViewCategory() {
       }
       const res = await fetch(`/api/${category}/${editingEntry.id}`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
         body: JSON.stringify(cleanData),
       })
       if (res.ok) {
@@ -260,7 +272,7 @@ function ViewCategory() {
                 {config.columns.map(col => (
                   <th key={col} className="table-head">{col}</th>
                 ))}
-                <th className="table-head">Actions</th>
+                {isAdmin && <th className="table-head">Actions</th>}
               </tr>
             </thead>
             <tbody>
@@ -275,22 +287,24 @@ function ViewCategory() {
                     <td className="table-cell cell-number">{index + 1}</td>
                     {config.render(entry)}
                     <td className="table-cell cell-date">{dateStr}</td>
-                    <td className="table-cell cell-action">
-                      <button
-                        className="edit-btn-table"
-                        onClick={() => openEditModal(entry)}
-                        title="Edit"
-                      >
-                        ✏️
-                      </button>
-                      <button
-                        className="delete-btn-table"
-                        onClick={() => deleteEntry(entry.id)}
-                        title="Delete"
-                      >
-                        🗑️
-                      </button>
-                    </td>
+                    {isAdmin && (
+                      <td className="table-cell cell-action">
+                        <button
+                          className="edit-btn-table"
+                          onClick={() => openEditModal(entry)}
+                          title="Edit"
+                        >
+                          ✏️
+                        </button>
+                        <button
+                          className="delete-btn-table"
+                          onClick={() => deleteEntry(entry.id)}
+                          title="Delete"
+                        >
+                          🗑️
+                        </button>
+                      </td>
+                    )}
                   </tr>
                 )
               })}

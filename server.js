@@ -1,35 +1,34 @@
 import express from 'express';
 import cors from 'cors';
-import fs from 'fs';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcryptjs';
 import path from 'path';
-import { v4 as uuidv4 } from 'uuid';
 import { fileURLToPath } from 'url';
+import Ows from './models/Ows.js';
+import Idiom from './models/Idiom.js';
+import SynAnt from './models/SynAnt.js';
+
+dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = 3001;
-const DATA_DIR = path.join(__dirname, 'data');
+const PORT = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(express.json());
 
-// Valid categories
-const VALID_CATEGORIES = ['ows', 'idioms', 'syn_ant'];
+// MongoDB model map
+const MODELS = {
+  ows: Ows,
+  idioms: Idiom,
+  syn_ant: SynAnt,
+};
 
-// Helper: read JSON file
-function readData(category) {
-  const filePath = path.join(DATA_DIR, `${category}.json`);
-  const raw = fs.readFileSync(filePath, 'utf-8');
-  return JSON.parse(raw);
-}
-
-// Helper: write JSON file
-function writeData(category, data) {
-  const filePath = path.join(DATA_DIR, `${category}.json`);
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
-}
+const VALID_CATEGORIES = Object.keys(MODELS);
 
 // Middleware: validate category
 function validateCategory(req, res, next) {
@@ -37,10 +36,58 @@ function validateCategory(req, res, next) {
   if (!VALID_CATEGORIES.includes(category)) {
     return res.status(400).json({ error: `Invalid category. Must be one of: ${VALID_CATEGORIES.join(', ')}` });
   }
+  req.model = MODELS[category];
   next();
 }
 
-// GET /api/transliterate - Convert English text to Hindi (MUST be before /:category routes)
+// Middleware: require admin auth (protects POST, PUT, DELETE)
+function requireAuth(req, res, next) {
+  const authHeader = req.headers.authorization;
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return res.status(401).json({ error: 'Unauthorized. Please login.' });
+  }
+  const token = authHeader.split(' ')[1];
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded;
+    next();
+  } catch (err) {
+    return res.status(401).json({ error: 'Invalid or expired token.' });
+  }
+}
+
+// Connect to MongoDB
+mongoose.connect(process.env.MONGODB_URI)
+  .then(() => console.log('✅ Connected to MongoDB'))
+  .catch(err => console.error('❌ MongoDB connection error:', err));
+
+// ===== AUTH ROUTES =====
+
+// POST /api/auth/login
+app.post('/api/auth/login', async (req, res) => {
+  const { username, password } = req.body;
+  if (!username || !password) {
+    return res.status(400).json({ error: 'Username and password required' });
+  }
+  if (username !== process.env.ADMIN_USERNAME) {
+    return res.status(401).json({ error: 'Invalid credentials' });
+  }
+  const isMatch = bcrypt.compareSync(password, process.env.ADMIN_PASSWORD_HASH);
+  if (!isMatch) {
+    return res.status(401).json({ error: 'Invalid credentials' });
+  }
+  const token = jwt.sign({ username, role: 'admin' }, process.env.JWT_SECRET, { expiresIn: '7d' });
+  res.json({ token, username, role: 'admin' });
+});
+
+// GET /api/auth/verify - Check if token is still valid
+app.get('/api/auth/verify', requireAuth, (req, res) => {
+  res.json({ valid: true, username: req.user.username, role: req.user.role });
+});
+
+// ===== PUBLIC ROUTES (no auth needed) =====
+
+// GET /api/transliterate
 app.get('/api/transliterate', async (req, res) => {
   const { text } = req.query;
   if (!text) {
@@ -61,13 +108,13 @@ app.get('/api/transliterate', async (req, res) => {
   }
 });
 
-// GET /api/all/stats - Get stats for all categories (MUST be before /:category routes)
-app.get('/api/all/stats', (req, res) => {
+// GET /api/all/stats
+app.get('/api/all/stats', async (req, res) => {
   try {
     const stats = {};
-    for (const category of VALID_CATEGORIES) {
-      const data = readData(category);
-      stats[category] = { total: data.length };
+    for (const [category, Model] of Object.entries(MODELS)) {
+      const total = await Model.countDocuments();
+      stats[category] = { total };
     }
     res.json(stats);
   } catch (err) {
@@ -75,64 +122,80 @@ app.get('/api/all/stats', (req, res) => {
   }
 });
 
-// GET /api/:category - Get all entries for a category
-app.get('/api/:category', validateCategory, (req, res) => {
+// GET /api/:category - Public: anyone can view
+app.get('/api/:category', validateCategory, async (req, res) => {
   try {
-    const data = readData(req.params.category);
+    const entries = await req.model.find().sort({ createdAt: 1 });
+    const data = entries.map(e => {
+      const obj = e.toObject();
+      obj.id = obj._id.toString();
+      delete obj._id;
+      delete obj.__v;
+      return obj;
+    });
     res.json(data);
   } catch (err) {
     res.status(500).json({ error: 'Failed to read data' });
   }
 });
 
-// POST /api/:category - Add a new entry
-app.post('/api/:category', validateCategory, (req, res) => {
+// ===== PROTECTED ROUTES (admin only) =====
+
+// POST /api/:category - Admin only: add entry
+app.post('/api/:category', requireAuth, validateCategory, async (req, res) => {
   try {
-    const data = readData(req.params.category);
-    const newEntry = {
-      id: uuidv4(),
-      ...req.body,
-      createdAt: new Date().toISOString(),
-    };
-    data.push(newEntry);
-    writeData(req.params.category, data);
-    res.status(201).json(newEntry);
+    const entry = await req.model.create(req.body);
+    const obj = entry.toObject();
+    obj.id = obj._id.toString();
+    delete obj._id;
+    delete obj.__v;
+    res.status(201).json(obj);
   } catch (err) {
     res.status(500).json({ error: 'Failed to save entry' });
   }
 });
 
-// DELETE /api/:category/:id - Delete an entry
-app.delete('/api/:category/:id', validateCategory, (req, res) => {
+// DELETE /api/:category/:id - Admin only: delete entry
+app.delete('/api/:category/:id', requireAuth, validateCategory, async (req, res) => {
   try {
-    let data = readData(req.params.category);
-    const index = data.findIndex(item => item.id === req.params.id);
-    if (index === -1) {
+    const result = await req.model.findByIdAndDelete(req.params.id);
+    if (!result) {
       return res.status(404).json({ error: 'Entry not found' });
     }
-    data.splice(index, 1);
-    writeData(req.params.category, data);
     res.json({ message: 'Entry deleted' });
   } catch (err) {
     res.status(500).json({ error: 'Failed to delete entry' });
   }
 });
 
-// PUT /api/:category/:id - Update an entry
-app.put('/api/:category/:id', validateCategory, (req, res) => {
+// PUT /api/:category/:id - Admin only: update entry
+app.put('/api/:category/:id', requireAuth, validateCategory, async (req, res) => {
   try {
-    let data = readData(req.params.category);
-    const index = data.findIndex(item => item.id === req.params.id);
-    if (index === -1) {
+    const entry = await req.model.findByIdAndUpdate(
+      req.params.id,
+      { ...req.body, updatedAt: new Date() },
+      { new: true }
+    );
+    if (!entry) {
       return res.status(404).json({ error: 'Entry not found' });
     }
-    data[index] = { ...data[index], ...req.body, updatedAt: new Date().toISOString() };
-    writeData(req.params.category, data);
-    res.json(data[index]);
+    const obj = entry.toObject();
+    obj.id = obj._id.toString();
+    delete obj._id;
+    delete obj.__v;
+    res.json(obj);
   } catch (err) {
     res.status(500).json({ error: 'Failed to update entry' });
   }
 });
+
+// ===== SERVE FRONTEND IN PRODUCTION =====
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'dist')));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+  });
+}
 
 app.listen(PORT, () => {
   console.log(`📚 VocabVault server running on http://localhost:${PORT}`);

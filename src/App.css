@@ -40,6 +40,123 @@ body {
   font-weight: 400;
 }
 
+/* ===== HEADER AUTH ===== */
+.app-header {
+  position: relative;
+}
+
+.header-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.admin-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-badge {
+  font-size: 0.82rem;
+  color: #22c55e;
+  font-weight: 500;
+  background: rgba(34, 197, 94, 0.1);
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.auth-btn {
+  padding: 6px 16px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  text-decoration: none;
+}
+
+.login-btn {
+  background: #27272a;
+  color: #a1a1aa;
+  border: 1px solid #3f3f46;
+}
+
+.login-btn:hover {
+  background: #3f3f46;
+  color: #e4e4e7;
+}
+
+.logout-btn {
+  background: none;
+  color: #71717a;
+  border: 1px solid #3f3f46;
+  font-size: 0.78rem;
+}
+
+.logout-btn:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+/* ===== LOGIN PAGE ===== */
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  padding: 20px;
+}
+
+.login-card {
+  background: #18181b;
+  border: 1px solid #27272a;
+  border-radius: 16px;
+  padding: 36px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.login-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+
+.login-header h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #e4e4e7;
+  margin-bottom: 4px;
+}
+
+.login-header p {
+  font-size: 0.88rem;
+  color: #71717a;
+}
+
+.login-error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.login-form .form-group {
+  margin-bottom: 16px;
+}
+
 /* ===== NOTIFICATION ===== */
 .notification {
   position: fixed;
