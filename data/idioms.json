@@ -1,0 +1,142 @@
+[
+  {
+    "id": "ecf028b6-ffa8-4629-afbd-6cfb75173bbf",
+    "idiom": "A bad patch",
+    "meaning": "A period of difficulty",
+    "hindi": "कठिनाई का दौर",
+    "createdAt": "2026-03-22T08:10:12.152Z"
+  },
+  {
+    "id": "9ce6d7cc-accf-4cc3-b983-fa6ec4245c46",
+    "idiom": "A beast of burden",
+    "meaning": "An animal that carries luggage",
+    "hindi": "बोझ ढोने वाला पशु",
+    "createdAt": "2026-03-22T09:55:42.199Z"
+  },
+  {
+    "id": "5834ef6b-a29f-4be7-9190-9e27399d67fb",
+    "idiom": "A bee hive",
+    "meaning": "A busy place",
+    "hindi": "व्यस्त जगह",
+    "createdAt": "2026-03-22T09:56:05.242Z"
+  },
+  {
+    "id": "353171cc-45c3-4b0a-ab4b-454c3d86e4e2",
+    "idiom": "A big draw",
+    "meaning": "Huge attraction",
+    "hindi": "बहुत बड़ा आकर्षण",
+    "createdAt": "2026-03-22T09:56:35.045Z"
+  },
+  {
+    "id": "0ba4f858-156f-44c2-9b01-46cb05bfa4a1",
+    "idiom": "A bird in the hand is worth two in the bush",
+    "meaning": "Having something for certain is better than the possibility of getting something better",
+    "hindi": "कुछ निश्चित रूप से होना कुछ बेहतर पाने की उम्मीद से अच्छा है",
+    "createdAt": "2026-03-22T09:58:00.950Z"
+  },
+  {
+    "id": "7948f8c2-18ea-497e-acbb-3fdf5a50775a",
+    "idiom": "A bird's eye view",
+    "meaning": "A general view from above // Aerial view // Good and comprehensive idea // An overall view",
+    "hindi": "ऊंचाई से विस्तृत दृश्य",
+    "createdAt": "2026-03-22T09:59:13.545Z"
+  },
+  {
+    "id": "797a2d81-0ce3-4633-9ae3-f054f9113157",
+    "idiom": "A bite at the cherry",
+    "meaning": "An attempt or opportunity to do something",
+    "hindi": "कुछ करने का मौका मिलना",
+    "createdAt": "2026-03-22T09:59:48.844Z"
+  },
+  {
+    "id": "acca65cc-618e-4bcd-9689-3241f1e37985",
+    "idiom": "A blessing/boon in disguise",
+    "meaning": "An apparent misfortune that eventually has good results // A hidden favour",
+    "hindi": "दुःख के भेष में सुख",
+    "createdAt": "2026-03-22T10:00:36.988Z"
+  },
+  {
+    "id": "c7f7bf22-e6d3-4399-8101-94133f700613",
+    "idiom": "A blue-eyed boy",
+    "meaning": "One who is favourite",
+    "hindi": "आँखों का तारा (बहुत प्यारा)",
+    "createdAt": "2026-03-22T10:01:17.402Z"
+  },
+  {
+    "id": "04497f83-e035-4cfc-8daf-58add36d5f0f",
+    "idiom": "A bolt from the blue",
+    "meaning": "Something unexpected and unpleasant // A complete surprise // A sudden calamity // An unexpected disaster",
+    "hindi": "आकस्मिक घटना",
+    "createdAt": "2026-03-22T10:02:02.035Z"
+  },
+  {
+    "id": "2b706ca8-4218-4307-ad3c-8753f98a1eb8",
+    "idiom": "A bone of contention",
+    "meaning": "Cause of dispute/quarrel // Point of an argument",
+    "hindi": "झगड़े का कारण",
+    "createdAt": "2026-03-22T10:02:44.754Z"
+  },
+  {
+    "id": "51a3c211-3222-49a6-bf5b-63fd73edc888",
+    "idiom": "A bull in China shop",
+    "meaning": "A clumsy person in a delicate situation",
+    "hindi": "शीशमहल में बन्दर (लापरवाह व्यक्ति)",
+    "createdAt": "2026-03-22T10:03:43.186Z"
+  },
+  {
+    "id": "041d9121-2cd0-4e59-a13c-2001f2c547ba",
+    "idiom": "A bull market",
+    "meaning": "A period of rising prices in the stock market",
+    "hindi": "शेयर बाजार में कीमतों में वृद्धि",
+    "createdAt": "2026-03-22T10:04:22.335Z"
+  },
+  {
+    "id": "f9ef0c7e-45a2-4079-9b5a-4cd03766fcaf",
+    "idiom": "A cakewalk",
+    "meaning": "An easy achievement // An easy task or victory",
+    "hindi": "अत्यंत सरल",
+    "createdAt": "2026-03-22T10:04:46.659Z"
+  },
+  {
+    "id": "8d8656f2-c668-436c-8d67-4e9f35c9cf5c",
+    "idiom": "A can of worms",
+    "meaning": "A complicated situation or problem",
+    "hindi": "जटिल परिस्थिति",
+    "createdAt": "2026-03-22T10:05:21.517Z"
+  },
+  {
+    "id": "06418796-7bef-4248-bfe6-00da65f55a9e",
+    "idiom": "A carrot and stick approach",
+    "meaning": "Rewards and punishments that influence someone's behavior",
+    "hindi": "प्रोत्साहन और दंड का मिश्रित उपयोग",
+    "createdAt": "2026-03-22T10:06:14.042Z"
+  },
+  {
+    "id": "05595a2b-7da2-4475-b3d8-91da37bb6860",
+    "idiom": "A change of heart",
+    "meaning": "A change in one's opinion // Different opinion about someone or something",
+    "hindi": "विचार में बदलाव",
+    "createdAt": "2026-03-22T10:06:49.740Z"
+  },
+  {
+    "id": "630fd304-1f27-4515-9abd-5149546f0ff5",
+    "idiom": "A clean slate",
+    "meaning": "Situation in which you can start again",
+    "hindi": "फिर से शुरू करने का अवसर",
+    "createdAt": "2026-03-22T10:07:23.666Z"
+  },
+  {
+    "id": "0689d068-8b90-4d8f-a8ba-859e7b09272d",
+    "idiom": "A closed book",
+    "meaning": "A mystery",
+    "hindi": "रहस्य",
+    "createdAt": "2026-03-22T10:07:38.112Z"
+  },
+  {
+    "id": "544c81af-0b57-49a8-bca5-cfbee34b82ea",
+    "idiom": "A close-fisted person",
+    "meaning": "A miser",
+    "hindi": "कंजूस आदमी",
+    "createdAt": "2026-03-22T10:07:57.734Z"
+  }
+]

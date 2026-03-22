@@ -1,0 +1,182 @@
+[
+  {
+    "id": "03fea4e7-682f-4b5f-8b75-3b4348f4aa75",
+    "word": "Abandon",
+    "meaning": "To leave someone, especially someone you are responsible for, with no intention of returning",
+    "hindi": "छोड़ देना",
+    "synonyms": "Desert, Forsake, Derilication, Discontinue, Leave, Unrestraint",
+    "antonyms": "Retain, Support, Constraint, Continue, Kept",
+    "createdAt": "2026-03-22T08:16:33.613Z"
+  },
+  {
+    "id": "561391f5-6533-44c5-ae2a-e0abfb2535a3",
+    "word": "Abate",
+    "meaning": "To become less intense or widespread",
+    "hindi": "समाप्त करना , कम करना",
+    "synonyms": "Subside, Decrease, Diminish, Reduce",
+    "antonyms": "Aggravate, Increase, Grow, Extend",
+    "createdAt": "2026-03-22T10:10:52.928Z"
+  },
+  {
+    "id": "f0cff0b0-a204-4e23-b85a-98c5a9263a05",
+    "word": "Abbreviate",
+    "meaning": "To shorten a word or phrase by omitting letters, usually using periods",
+    "hindi": "संक्षित्प्त करना",
+    "synonyms": "Shorten, Compress",
+    "antonyms": "Expand",
+    "createdAt": "2026-03-22T10:11:52.554Z"
+  },
+  {
+    "id": "526f5ed9-999f-458b-bb28-806ebc921b96",
+    "word": "Abdicate",
+    "meaning": "Fail to fulfil or undertake something; resign from or formally renounce the throne",
+    "hindi": "त्यागना",
+    "synonyms": "Abandon, Renounce",
+    "antonyms": "Assert",
+    "createdAt": "2026-03-22T10:12:41.027Z"
+  },
+  {
+    "id": "7c2dcfee-2dfc-48e1-88f1-6e3a0be875a0",
+    "word": "Abduct",
+    "meaning": "To take someone away illegally by force or deception, usually to obtain ransom",
+    "hindi": "अपहरण करना",
+    "synonyms": "Kidnap",
+    "antonyms": "Redeem",
+    "createdAt": "2026-03-22T10:13:22.689Z"
+  },
+  {
+    "id": "0025c4e9-56a0-4b90-8ea2-7cfbb460dc2b",
+    "word": "Aberration",
+    "meaning": "A departure from what is normal, usual, or expected, typically an unwelcome one",
+    "hindi": "असामान्यता , विचलन",
+    "synonyms": "Deviation",
+    "antonyms": "Normality",
+    "createdAt": "2026-03-22T10:14:26.628Z"
+  },
+  {
+    "id": "4b4eb6df-c8d5-41b4-92d9-a384b8c2633d",
+    "word": "Abeyance",
+    "meaning": "A state of temporary disuse or suspension",
+    "hindi": "ठहराव",
+    "synonyms": "Inactivity, Suspension, Temporary",
+    "antonyms": "Continuation",
+    "createdAt": "2026-03-22T10:15:20.871Z"
+  },
+  {
+    "id": "ea8db8db-c854-4495-94b0-55a18d360bec",
+    "word": "Abide",
+    "meaning": "To accept or act in accordance with (a rule, decision, or recommendation)",
+    "hindi": "मान लेना , पालन करना",
+    "synonyms": "Dwell",
+    "antonyms": "Reject",
+    "createdAt": "2026-03-22T10:16:20.631Z"
+  },
+  {
+    "id": "1df07732-f952-40db-a0c6-3ea57f99608b",
+    "word": "Abjure",
+    "meaning": "To solemnly renounce (a belief, cause, or claim)",
+    "hindi": "त्यागना",
+    "synonyms": "Renounce, Recant, Withdraw",
+    "antonyms": "Acquire",
+    "createdAt": "2026-03-22T10:17:12.560Z"
+  },
+  {
+    "id": "00e95218-4058-4b7f-a924-7c6e1de7b0cf",
+    "word": "Abolish",
+    "meaning": "Formally put an end to (a system, practice, or institution)",
+    "hindi": "हटाना",
+    "synonyms": "Eliminate, Cancellation, Eradicate, Destroy",
+    "antonyms": "Continue, Build, Construct, Formalize, Create, Restore",
+    "createdAt": "2026-03-22T10:18:22.467Z"
+  },
+  {
+    "id": "9ca89d28-f8b6-4818-84bf-8c2513c17c1f",
+    "word": "Abominable",
+    "meaning": "Causing moral revulsion; very bad or unpleasant",
+    "hindi": "घटिया",
+    "synonyms": "Obnoxious, Repugnant",
+    "antonyms": "Delightful, Admirable",
+    "createdAt": "2026-03-22T10:19:11.771Z"
+  },
+  {
+    "id": "449ef751-6529-4775-9f5c-f26aec5c3dee",
+    "word": "Abort",
+    "meaning": "To terminate (a process or undertaking) prematurely",
+    "hindi": "बंद कर देना",
+    "synonyms": "End",
+    "antonyms": "Commence",
+    "createdAt": "2026-03-22T10:19:47.057Z"
+  },
+  {
+    "id": "7be4b980-acb6-4680-8a01-c43c2fe6e74b",
+    "word": "Abortive",
+    "meaning": "Failing to produce the intended result; unsuccessful",
+    "hindi": "असफल",
+    "synonyms": "Unsucessful, Ineffective",
+    "antonyms": "Successful",
+    "createdAt": "2026-03-22T10:20:31.377Z"
+  },
+  {
+    "id": "a395350d-750f-47f8-9e00-1ed9b4350b05",
+    "word": "Abound",
+    "meaning": "To exist in large numbers or amounts",
+    "hindi": "प्रचुर मात्रा में होना",
+    "synonyms": "Flourish",
+    "antonyms": "Lack",
+    "createdAt": "2026-03-22T10:21:15.974Z"
+  },
+  {
+    "id": "2e8a999d-4e76-4db1-9ade-9bcb696f0922",
+    "word": "Abridge",
+    "meaning": "To shorten (a piece of writing) without losing the sense",
+    "hindi": "संक्षेप करना",
+    "synonyms": "Shorten",
+    "antonyms": "Stretch, Elongate, Enlarge",
+    "createdAt": "2026-03-22T10:21:58.892Z"
+  },
+  {
+    "id": "629d9ac2-7380-46ae-91ae-15a295491148",
+    "word": "Abrogate",
+    "hindi": "रद्द करना",
+    "meaning": "To repeal or do away with (a law, right, or formal agreement)",
+    "synonyms": "Repeal, Abolish, Put an End to",
+    "antonyms": "Establish",
+    "createdAt": "2026-03-22T10:22:46.360Z"
+  },
+  {
+    "id": "87f568ec-ff7b-4003-bb2c-b38a7d5ed955",
+    "word": "Abrupt",
+    "meaning": "Sudden and unexpected",
+    "hindi": "आकस्मिक",
+    "synonyms": "Sudden",
+    "antonyms": "Gradual, Smooth",
+    "createdAt": "2026-03-22T10:23:16.940Z"
+  },
+  {
+    "id": "1b6c8ad3-0017-45fe-b62f-431464e75823",
+    "word": "Absolute",
+    "meaning": "Not qualified or diminished in any way; total",
+    "hindi": "पूर्ण",
+    "synonyms": "Complete, Definitely",
+    "antonyms": "Limited, Incomplete",
+    "createdAt": "2026-03-22T10:23:58.365Z"
+  },
+  {
+    "id": "6f86201b-c120-47bf-8daf-6f3f9ef80861",
+    "word": "Absolve",
+    "meaning": "To set or declare (someone) free from blame, guilt, or responsibility",
+    "hindi": "दोषमुक्त करना",
+    "synonyms": "Acquit, Pardon",
+    "antonyms": "Blame, Condemn, Accused",
+    "createdAt": "2026-03-22T10:25:03.837Z"
+  },
+  {
+    "id": "b980fd8c-62e2-4870-aab6-e73409e937ef",
+    "word": "Absorb",
+    "meaning": "To take in or soak up (energy, or a liquid or other substance) by chemical or physical action",
+    "hindi": "सोख लेना",
+    "synonyms": "Soak",
+    "antonyms": "Eject, Emit, Dismiss",
+    "createdAt": "2026-03-22T10:26:01.909Z"
+  }
+]
